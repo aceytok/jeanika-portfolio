@@ -1,0 +1,113 @@
+/* Global */
+
+:root {
+    --primary-color: #244b5a;
+    --accent-color: #C6DAE4;
+    --secondary-color: #ffcc70;
+    --text-color: #333;
+    --bg-light: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-color);
+    background-color: #F1F1F1;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navbar */
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    box-shadow: 0 2px 6px rbga(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+.menu-overlay.active {
+    display: flex;
+}
+
+.menu-overlay ul {
+    list-style: none;
+    text-align: center;
+}
+
+.menu-overlay li {
+    margin: 1rem 0;
+}
+
+.menu-overlay a {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+    transition: color 0.2s;
+}
+
+.menu-overlay a:hover {
+    color: var(--secondary-color);
+}
+
+/* Hero Section */
+
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 7rem;
+    min-height: 100vh;
+    background-color: var(--bg-light);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content p {
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
