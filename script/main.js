@@ -1,9 +1,11 @@
-const menuBtn = document.getElementById("menu-btn");
-const menuOverlay = document.getElementById("menu-overlay");
+const menuBtn = document.querySelector(".menu-btn");
+const menuOverlay = document.querySelector(".menu-overlay");
+const heroImg = document.querySelector(".hero-img")
 
 menuBtn.addEventListener("click", () => {
     menuOverlay.classList.toggle("active");
     document.body.classList.toggle("no-scroll");
+    heroImg.classList.toggle("active");
 });
 
 const menuLinks = menuOverlay.querySelectorAll("a");

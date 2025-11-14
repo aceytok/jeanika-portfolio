@@ -12,6 +12,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    line-height: 1.5em;
+    word-spacing: 0.16em;   
 }
 
 body {
@@ -32,6 +34,9 @@ h2, h3 {
     font-weight: 800;
 }
 
+p {
+    max-width: 67ch;
+}
 /* Navbar */
 
 header {
@@ -45,18 +50,18 @@ header {
 }
 
 .navbar {
-    max-width: 1200px;
-    margin: auto;
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
 }
 
 .menu-btn {
     background: none;
     border: none;
     cursor: pointer;
+    display: flex;
 }
 
 .menu-overlay {
@@ -107,7 +112,13 @@ header {
 .hero-img {
     position: relative;
     z-index: 2000;
+    bottom: 1.5rem;
 }
+
+.hero-img.active {
+    z-index: 0;
+}
+
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -124,6 +135,28 @@ header {
 
 /* About Me Section */
 
+
+.text-part {
+    display: inline-block;
+    position: relative;
+    transform: translateX(0);
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    transform: translateX(200%);
+    animation-name: slide-in-right;
+    color: var(--secondary-color);
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(200%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 #about-me {
     width: 100vw;
     background-image: url("../assets/images/about-me-background.svg");
@@ -132,6 +165,7 @@ header {
     background-repeat: no-repeat;
     padding: 6rem 2rem;
     background-color: var(--bg-light);
+    display: flex;
 }
 
 .about-content {
@@ -143,33 +177,41 @@ header {
 .about-content p {
     color: white;
     font-family: ff-din-paneuropean, sans-serif;
+    font-weight: 300;
+    text-align: left;
+    margin-left: 2rem;
 }
 
 .about-content h2 {
     color: white;
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 200;
+    word-spacing: 1rem;
+    margin-bottom: 2rem;
 }
 
+.subscript-text {
+      vertical-align: -0.15em;
+}
 
-
+.superscript-text {
+    vertical-align: 0.15em;
+}
 /* Work Preview */
 
 #work-preview {
     padding: 4rem 2rem;
     background: var(--bg-light);
-    text-align: left;
     font-family: "ruddy", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-#work-preview h2 {
-    font-size: 2rem;
-    color: var(--primary-color);
+.work-preview-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    margin: 3rem auto;
 }
 
 .work-grid {
@@ -183,7 +225,7 @@ header {
 .work-card {
     background-color: var(--bg-light);
     border-radius: 45px;
-
+    text-align: left;
 }
 
 .work-card:hover {
