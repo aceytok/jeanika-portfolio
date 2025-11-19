@@ -5,7 +5,7 @@
     --accent-color: #C6DAE4;
     --secondary-color: #ffcc70;
     --text-color: #333;
-    --bg-light: #f9f9f9;
+    --bg-light: #F1F1F1;
 }
 
 * {
@@ -21,7 +21,7 @@ body {
     font-weight: 400;
     font-style: normal;
     color: var(--text-color);
-    background-color: #F1F1F1;
+    background-color: var(--bg-light);
     overflow-x: hidden;
 }
 
@@ -276,47 +276,58 @@ footer {
 
 .project-hero {
     width: 100%;
-    padding: 12rem 2rem 6rem 2rem;
+    padding: 12rem 2rem 4rem;
     background-color: var(--bg-light);
     color: var(--primary-color);
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
 .project-hero h1 {
     font-size: clamp(2.5rem, 6vw, 5rem);
-    margin-bottom: 1rem;
     font-family: "ruddy", sans-serif;
     letter-spacing: 1px;
 }
 
 .project-hero p {
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    opacity: 0.8;
-    margin: 0.3rem 0;
+    font-size: clamp(1.5rem, 2vw, 1.3rem);
     color: var(--secondary-color);
 }
 
+.project-hero div {
+    display: flex;
+    gap: 4rem;
+}
+
+.project-hero, #project-content {
+    margin-left: 8rem;
+}
+
 #project-content {
-    max-width: 900px;
-    margin: 4rem auto;
+    max-width: 800px;
     padding: 0 2rem;
     font-size: 1.2rem;
     line-height: 1.8rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
+
 
 #project-content p {
     margin-bottom: 1.8rem;
+    text-align: left;
 }
 
 .project-images {
     width: 100%;
     max-width: 1500px;
-    margin: 4rem auto 6rem auto;
-    padding: 0 2rem;
+    margin: 2.5rem auto;
 
     display: grid;
     grid-template-columns: repeat(auto-fit, max(350px, 1fr));
@@ -327,5 +338,24 @@ footer {
     width: 100%;
     height: auto;
     border-radius: 80px;
+    object-fit: cover;
+    background-color: #ddd;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-images img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.three-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.three-image img {
+    width: 100%;
+    max-width: 1500px;
     object-fit: cover;
 }
