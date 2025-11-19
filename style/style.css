@@ -159,11 +159,12 @@ header {
 
 #about-me {
     width: 100vw;
+    min-height: 500px;
     background-image: url("../assets/images/about-me-background.svg");
-    background-size: cover;
-    background-position: center;
+    background-size: 100% auto;
+    background-position: top center;
     background-repeat: no-repeat;
-    padding: 6rem 2rem;
+    padding: 8rem 2rem;
     background-color: var(--bg-light);
     display: flex;
 }
@@ -197,6 +198,7 @@ header {
 .superscript-text {
     vertical-align: 0.15em;
 }
+
 /* Work Preview */
 
 #work-preview {
@@ -268,4 +270,62 @@ footer {
     #work-preview {
         font-size: 1.5rem;
     }
+}
+
+/* Project Pages */
+
+.project-hero {
+    width: 100%;
+    padding: 12rem 2rem 6rem 2rem;
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    margin-bottom: 1rem;
+    font-family: "ruddy", sans-serif;
+    letter-spacing: 1px;
+}
+
+.project-hero p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    opacity: 0.8;
+    margin: 0.3rem 0;
+    color: var(--secondary-color);
+}
+
+#project-content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}
+
+#project-content p {
+    margin-bottom: 1.8rem;
+}
+
+.project-images {
+    width: 100%;
+    max-width: 1500px;
+    margin: 4rem auto 6rem auto;
+    padding: 0 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, max(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 80px;
+    object-fit: cover;
 }
