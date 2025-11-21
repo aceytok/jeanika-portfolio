@@ -24,3 +24,20 @@ window.addEventListener("scroll", () => {
         header.classList.remove("scrolled");
     }
 });
+
+
+let lastScrollY = window.scrollY;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+    const currentY = window.scrollY;
+
+    // Only start hiding when user scrolls more than 100px
+    if (currentY > 100 && currentY > lastScrollY) {
+        header.classList.add("hide");
+    } else {
+        header.classList.remove("hide");
+    }
+
+    lastScrollY = currentY;
+});

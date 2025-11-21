@@ -17,6 +17,7 @@
 }
 
 body {
+    padding-top: 100px;
     font-family: "ruddy", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -46,7 +47,13 @@ header {
     left: 0;
     background-color: var(--accent-color);
     box-shadow: 0 2px 6px rbga(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 9;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+header.hide {
+    transform: translateY(-100%);
+    opacity: 0;
 }
 
 .navbar {
@@ -101,18 +108,26 @@ header {
 /* Hero Section */
 
 #hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     min-height: 80vh;
     background-color: var(--bg-light);
+    position: relative;
+    margin-top: 6rem;
+    padding-top: 8rem;
 }
 
 .hero-img {
-    position: relative;
-    z-index: 2000;
-    bottom: 1.5rem;
+    position: absolute;
+    top: -10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: auto;
+    z-index: 10;
+}
+
+.hero-name {
+    width: 650px;
 }
 
 .hero-img.active {
@@ -124,6 +139,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 1rem;
 }
 
 .hero-content p {
@@ -161,10 +177,9 @@ header {
     width: 100vw;
     min-height: 500px;
     background-image: url("../assets/images/about-me-background.svg");
-    background-size: contain;
+    background-size: 70% auto;
     background-position: top center;
     background-repeat: no-repeat;
-    padding: 8rem 2rem;
     background-color: var(--bg-light);
     display: flex;
 }
@@ -275,14 +290,14 @@ footer {
 .project-hero,
 #project-content,
 .project-images {
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
-    padding: 0 1.5rem;
+    padding: 1rem 1.5rem;
     text-align: left;
 }
 
 .project-hero {
-    padding-top: 10rem;
+    padding-top: 2rem;
 }
 
 .project-hero h1 {
@@ -295,7 +310,7 @@ footer {
     gap: 1.5rem;
     font-weight: 500;
     color: var(--secondary-color);
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 #project-content p {
