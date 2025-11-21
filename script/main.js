@@ -1,11 +1,28 @@
 const menuBtn = document.querySelector(".menu-btn");
 const menuOverlay = document.querySelector(".menu-overlay");
+const menuBg = document.querySelector(".menu-bg");
+const closeBtn = document.querySelector(".close-menu");
 const heroImg = document.querySelector(".hero-img")
 
 menuBtn.addEventListener("click", () => {
     menuOverlay.classList.toggle("active");
-    document.body.classList.toggle("no-scroll");
+    menuBg.classList.toggle("active");
     heroImg.classList.toggle("active");
+    document.body.classList.toggle("no-scroll");
+});
+
+menuBg.addEventListener("click", () => {
+    menuOverlay.classList.remove("active");
+    menuBg.classList.remove("active");
+    heroImg.classList.toggle("active");
+    document.body.classList.remove("no-scroll");
+});
+
+closeBtn.addEventListener("click", () => {
+    menuOverlay.classList.remove("active");
+    menuBg.classList.remove("active");
+    heroImg.classList.toggle("active");
+    document.body.classList.toggle("no-scroll");
 });
 
 const menuLinks = menuOverlay.querySelectorAll("a");

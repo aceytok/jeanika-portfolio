@@ -4,7 +4,7 @@
     --primary-color: #244b5a;
     --accent-color: #C6DAE4;
     --secondary-color: #ffcc70;
-    --text-color: #333;
+    --text-color: #344656;
     --bg-light: #F1F1F1;
 }
 
@@ -48,12 +48,17 @@ header {
     background-color: var(--accent-color);
     box-shadow: 0 2px 6px rbga(0, 0, 0, 0.5);
     z-index: 9;
-    transition: transform 0.35s ease, opacity 0.35s ease;
+    
 }
 
 header.hide {
+    transition: transform 0.35s ease, opacity 0.35s ease;
     transform: translateY(-100%);
     opacity: 0;
+}
+
+.no-scroll {
+    overflow: hidden;
 }
 
 .navbar {
@@ -72,37 +77,96 @@ header.hide {
 }
 
 .menu-overlay {
-    display: none;
     position: fixed;
     top: 0;
-    right: 0;
-    width: 100%;
+    right: -320px;
+    width: 320px;
     height: 100vh;
     background-color: var(--primary-color);
+    transition: transform 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 23;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
 }
 
 .menu-overlay.active {
-    display: flex;
+    right: 0;
 }
 
-.menu-overlay ul {
+.close-menu {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.menu-avatar img {
+    width: 150px;
+    height: auto;
+}
+
+.menu-links {
     list-style: none;
+    width: 100%;
     text-align: center;
 }
 
-.menu-overlay li {
-    margin: 1rem 0;
+.menu-links li {
+    margin: 1.2rem 0;
 }
 
-.menu-overlay a {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: white;
-    transition: color 0.2s;
-}
-
-.menu-overlay a:hover {
+.menu-links a {
+    font-size: 1.7rem;
     color: var(--secondary-color);
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.menu-links a:hover {
+    color: white;
+}
+
+.menu-socials {
+    margin-top: auto;
+    text-align: right;
+    width: 100%;
+    padding-right: 0.5rem;
+}
+
+.menu-socials a {
+    display: block;
+    color: white;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.menu-socials a:hover {
+    opacity: 1;
+    color: var(--secondary-color);
+}
+
+.menu-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 21;
+}
+
+.menu-bg.active {
+    display: block;
 }
 
 /* Hero Section */
@@ -123,7 +187,7 @@ header.hide {
     transform: translateX(-50%);
     width: 260px;
     height: auto;
-    z-index: 10;
+    z-index: 20;
 }
 
 .hero-name {
@@ -131,7 +195,7 @@ header.hide {
 }
 
 .hero-img.active {
-    z-index: 0;
+    opacity: 0.85;
 }
 
 .hero-content {
@@ -177,7 +241,7 @@ header.hide {
     width: 100vw;
     min-height: 500px;
     background-image: url("../assets/images/about-me-background.svg");
-    background-size: 70% auto;
+    background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
     background-color: var(--bg-light);
@@ -196,6 +260,7 @@ header.hide {
     font-weight: 300;
     text-align: left;
     margin-left: 2rem;
+    font-size: 1.3rem;
 }
 
 .about-content h2 {
@@ -271,11 +336,20 @@ header.hide {
 /* Footer */
 
 footer {
-    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 1.5rem;
     background-color: var(--primary-color);
     color: white;
     text-align: center;
     font-size: 0.9rem;
+}
+
+.footer-about {
+    position: fixed;
+    height: 100vh;
 }
 
 @media (max-width: 768px) {
@@ -317,6 +391,8 @@ footer {
     margin-bottom: 1.2rem;
     line-height: 1.6;
     font-family: ff-din-paneuropean, sans-serif;
+    color: var(--text-color);
+    font-weight: 500;
 }
 
 .project-images img {
@@ -343,7 +419,35 @@ footer {
     object-fit: cover;
 }
 
+/* About Me Page */
 
+.about-me-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: auto;
+    max-width: 950px;
+}
+
+.about-me-text h1 {
+    padding: 3.5rem 0 1.5rem 0;
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+.about-me-text p {
+    padding-bottom: 2rem;
+    font-family: ff-din-paneuropean, sans-serif;
+    color: var(--primary-color);
+}
+
+.about-me-img {
+    width: 500px;
+    height: auto;
+    padding: 3rem;
+    margin: auto;
+}
 /* Mobile Responsiveness */
 
 @media (max-width: 768px) {
