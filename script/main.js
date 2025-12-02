@@ -1,55 +1,91 @@
+// Elements
 const menuBtn = document.querySelector(".menu-btn");
 const menuOverlay = document.querySelector(".menu-overlay");
 const menuBg = document.querySelector(".menu-bg");
-const closeBtn = document.querySelector(".close-menu");
-const heroImg = document.querySelector(".hero-img")
+const closeMenuBtn = document.querySelector(".close-menu");
+const heroImg = document.querySelector(".hero-img");
+const contactBtn = document.querySelector('a[href="#contact"]');
+const modal = document.querySelector('.modal');
+const closeModalBtn = document.querySelector('.close-modal');
+const form = document.querySelector("#contact-modal form");
+const header = document.querySelector("header");
 
-menuBtn.addEventListener("click", () => {
-    menuOverlay.classList.toggle("active");
-    menuBg.classList.toggle("active");
-    heroImg.classList.toggle("active");
-    document.body.classList.toggle("no-scroll");
-});
 
-menuBg.addEventListener("click", () => {
+// MENU FUNCTIONS
+function openMenu() {
+    menuOverlay.classList.add("active");
+    menuBg.classList.add("active");
+    heroImg.classList.add("active");
+    document.body.classList.add("no-scroll");
+}
+
+function closeMenu() {
     menuOverlay.classList.remove("active");
     menuBg.classList.remove("active");
-    heroImg.classList.toggle("active");
+    heroImg.classList.remove("active");
     document.body.classList.remove("no-scroll");
+}
+
+
+// MODAL FUNCTIONS
+function openModal() {
+    modal.classList.add("show");
+    document.body.classList.add("no-scroll");
+    closeMenu();
+}
+
+function closeModal() {
+    modal.classList.remove("show");
+    document.body.classList.remove("no-scroll");
+}
+
+
+// Event Listeners
+menuBtn.addEventListener("click", openMenu);
+closeMenuBtn.addEventListener("click", closeMenu);
+menuBg.addEventListener("click", closeMenu);
+
+contactBtn.addEventListener("click", e => {
+    e.preventDefault();
+    openModal();
 });
 
-closeBtn.addEventListener("click", () => {
-    menuOverlay.classList.remove("active");
-    menuBg.classList.remove("active");
-    heroImg.classList.toggle("active");
-    document.body.classList.toggle("no-scroll");
+closeModalBtn.addEventListener("click", closeModal);
+
+
+// Close modal if clicking outside
+window.addEventListener("click", e => {
+    if (e.target === modal) closeModal();
 });
 
-const menuLinks = menuOverlay.querySelectorAll("a");
-menuLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        menuOverlay.classList.remove("active");
-        document.body.classList.remove("no-scroll");
+// Close modal on ESC key
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeModal();
+});
+
+
+// Handle form submit
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form)
     });
-});
 
-window.addEventListener("scroll", () => {
-    const header = document.querySelector("header");
-    if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
+    if (res.ok) {
+        form.innerHTML = `<p class="success">Thanks! Your message was sent.</p>`;
+        setTimeout(closeModal, 1500);
     }
 });
 
 
+// Hide header on scroll
 let lastScrollY = window.scrollY;
-const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
     const currentY = window.scrollY;
 
-    // Only start hiding when user scrolls more than 100px
     if (currentY > 100 && currentY > lastScrollY) {
         header.classList.add("hide");
     } else {
@@ -58,3 +94,4 @@ window.addEventListener("scroll", () => {
 
     lastScrollY = currentY;
 });
+

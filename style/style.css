@@ -8,6 +8,14 @@
     --bg-light: #F1F1F1;
 }
 
+html, body {
+    height: 100%;
+}
+
+main {
+    flex: 1;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +25,8 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     padding-top: 100px;
     font-family: "ruddy", sans-serif;
     font-weight: 400;
@@ -37,7 +47,9 @@ h2, h3 {
 
 p {
     max-width: 67ch;
+    text-wrap: balance;
 }
+
 /* Navbar */
 
 header {
@@ -169,6 +181,132 @@ header.hide {
     display: block;
 }
 
+/* Contact Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal.show {
+    display: flex;
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 28px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    animation: slideUp 0.35s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Close button */
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0;
+    line-height: 1;
+}
+
+/* Form Styles */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    border: 2px solid var(--accent-color);
+    font-size: 1rem;
+    font-family: ff-din-paneuropean, sans-serif;
+    resize: none;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+    border-color: var(--primary-color);
+}
+
+/* Button */
+.modal-content button {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 14px;
+    font-size: 1.05rem;
+    font-family: "ruddy", sans-serif;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.modal-content button:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.success {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+input:valid,
+textarea:valid {
+    border: 2px solid var(--primary-color);
+}
+
+input:invalid,
+textarea:invalid {
+    border: 2px solid #e74c3c;
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}s
+
 /* Hero Section */
 
 #hero {
@@ -182,7 +320,7 @@ header.hide {
 
 .hero-img {
     position: absolute;
-    top: -10rem;
+    top: 2rem;
     left: 50%;
     transform: translateX(-50%);
     width: 260px;
@@ -195,7 +333,7 @@ header.hide {
 }
 
 .hero-img.active {
-    opacity: 0.85;
+    opacity: 0.7;
 }
 
 .hero-content {
@@ -203,7 +341,8 @@ header.hide {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 1rem;
+    padding-top: 14rem;
+    padding-bottom: 4rem;
 }
 
 .hero-content p {
@@ -218,30 +357,27 @@ header.hide {
 
 .text-part {
     display: inline-block;
-    position: relative;
-    transform: translateX(0);
     animation-duration: 2s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
-    transform: translateX(200%);
-    animation-name: slide-in-right;
+    animation-name: slide-in-top;
     color: var(--secondary-color);
 }
 
-@keyframes slide-in-right {
+@keyframes slide-in-top {
     0% {
-        transform: translateX(200%);
+        transform: translateY(-60%);
     }
     100% {
-        transform: translateX(0);
+        transform: translateY(0);
     }
 }
 
 #about-me {
     width: 100vw;
-    min-height: 500px;
-    background-image: url("../assets/images/about-me-background.svg");
-    background-size: 100% auto;
+    min-height: 750px;
+    background-image: url("../assets/images/about-me-bg.svg");
+    background-size: 120% auto;
     background-position: top center;
     background-repeat: no-repeat;
     background-color: var(--bg-light);
@@ -250,17 +386,21 @@ header.hide {
 
 .about-content {
     text-align: center;
-    max-width: 900px;
+    position: relative;
+    z-index: 2;
     margin: auto;
+    max-width: 700px;
+    bottom: 3rem;
 }
 
 .about-content p {
     color: white;
     font-family: ff-din-paneuropean, sans-serif;
     font-weight: 300;
-    text-align: left;
-    margin-left: 2rem;
+    text-align: center;
+    margin-left: 0 auto;
     font-size: 1.3rem;
+    max-width: 600px;
 }
 
 .about-content h2 {
@@ -269,6 +409,7 @@ header.hide {
     font-weight: 200;
     word-spacing: 1rem;
     margin-bottom: 2rem;
+    line-height: 1.2;
 }
 
 .subscript-text {
@@ -345,11 +486,8 @@ footer {
     color: white;
     text-align: center;
     font-size: 0.9rem;
-}
-
-.footer-about {
-    position: fixed;
-    height: 100vh;
+    width: 100vw;
+    margin-top: auto;
 }
 
 @media (max-width: 768px) {
@@ -375,16 +513,16 @@ footer {
 }
 
 .project-hero h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 0.25rem;
 }
 
 .project-hero div {
     display: flex;
     gap: 1.5rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--secondary-color);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 #project-content p {
@@ -398,7 +536,7 @@ footer {
 .project-images img {
     width: 100%;
     border-radius: 60px;
-    margin-bottom: 1.3rem;
+    margin-bottom: 1.5rem;
     background-color: #ddd;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -448,7 +586,36 @@ footer {
     padding: 3rem;
     margin: auto;
 }
+
+.footer-about {
+    width: 100vw;
+    margin-top: auto;
+}
 /* Mobile Responsiveness */
+
+@media (max-width: 700px) {
+    #about-me {
+        padding: 8rem 0 4rem;
+    }
+
+    .about-content {
+        padding: 0 1.2rem;
+    }
+
+    .about-content h2 {
+        font-size: 2.2rem;
+        word-spacing: 0.3rem;
+    }
+
+    .about-content p {
+        font-size: 1.05rem;
+        max-width: 90%;
+    }
+
+    .about-bg {
+        width: 140%;
+    }
+}
 
 @media (max-width: 768px) {
     #about-me {
