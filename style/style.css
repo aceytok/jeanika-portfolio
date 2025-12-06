@@ -340,7 +340,7 @@ button:disabled {
 }
 
 .hero-img.active {
-    opacity: 0.7;
+    z-index: 0;
 }
 
 .hero-content {
@@ -384,7 +384,7 @@ button:disabled {
     width: 100vw;
     min-height: 750px;
     background-image: url("../assets/images/about-me-bg.svg");
-    background-size: 120% auto;
+    background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
     background-color: var(--bg-light);
@@ -448,9 +448,8 @@ button:disabled {
 
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
     margin: auto;
 }
 
@@ -466,15 +465,18 @@ button:disabled {
 
 .work-card img {
     width: 100%;
+    border-radius: 40px;
+    max-height: 550px;
+    object-fit: cover;
     display: block;
-    border-radius: 45px;
     overflow: hidden;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .work-card h3 {
-    font-size: 3rem;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    margin: 1rem 0;
     color: var(--primary-color);
 }
 
@@ -611,11 +613,11 @@ footer {
     /* ——— HERO ——— */
     .hero-img {
         width: clamp(200px, 50vw, 320px);
-        top: 5rem;
+        top: 4rem;
     }
 
     .hero-name {
-        width: clamp(240px, 70vw, 500px);
+        width: clamp(220px, 70vw, 500px);
         display:block;
         margin:auto;
     }
@@ -627,18 +629,20 @@ footer {
 
     /* ——— ABOUT ME ——— */
     #about-me {
-        background-size: 240% auto;
+        background-size: cover;
         background-position: top center;
-        padding-top: 8rem;
-        min-height: 900px;
+        padding-top: 10rem;
+        min-height: 1050px;
     }
 
-    .about-content {
-        bottom: 0;
-        padding: 0 1rem;
-        margin-top: 2rem;
-        max-width: 90vw;
+    .about-content h2 { 
+        font-size: clamp(1.6rem, 6vw, 2.6rem);
     }
+
+    .about-content p {
+        font-size: clamp(1rem, 4.2vw, 1.25rem);
+    }
+}
 
 
     /* ——— WORK PREVIEW ——— */
