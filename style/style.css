@@ -434,7 +434,7 @@ button:disabled {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 3rem auto;
+    margin: 0 auto 3rem auto;
 }
 
 .work-grid {
@@ -504,7 +504,7 @@ footer {
 .project-images {
     max-width: 1200px;
     margin: auto;
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     text-align: left;
 }
 
@@ -514,7 +514,6 @@ footer {
 
 .project-hero h1 {
     font-size: 3rem;
-    margin-bottom: 0.25rem;
 }
 
 .project-hero div {
